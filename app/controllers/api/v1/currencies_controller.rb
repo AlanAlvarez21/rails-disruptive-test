@@ -3,17 +3,15 @@
 require 'uri'
 require 'net/http'
 
-# Currencies Controller
 module Api
   module V1
+    # Currencies Controller
     class CurrenciesController < ApplicationController
       before_action :set_currency, only: %i[show update destroy]
 
       # GET /currencies
       def index
-        # assets = %w[BTC ADA ETH]
-
-        assets = Currency.all.map(&:title).join(',') 
+        assets = Currency.all.map(&:title).join(',')
         url = URI("https://rest.coinapi.io/v1/assets/#{assets}")
         https = Net::HTTP.new(url.host, url.port)
         https.use_ssl = true
