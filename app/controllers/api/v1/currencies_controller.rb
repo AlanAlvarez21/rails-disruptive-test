@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'uri'
+require 'net/http'
+
 # Currencies Controller
 module Api
   module V1
@@ -8,8 +11,22 @@ module Api
 
       # GET /currencies
       def index
-        @currencies = Currency.all
+        # assets = %w[BTC ADA ETH]
 
+        assets = Currency.all.map(&:title).join(',') 
+        url = URI("https://rest.coinapi.io/v1/assets/#{assets}")
+        https = Net::HTTP.new(url.host, url.port)
+        https.use_ssl = true
+        request = Net::HTTP::Get.new(url)
+        request['Accept'] = 'text/plain'
+        request['X-CoinAPI-Key'] = 'F3699613-BEF1-4ADD-83D2-B90D9CBDABDD'
+
+        response = https.request(request)
+
+        @currencies = response.read_body
+        # @currencies = Currency.all
+
+        # render json: @currencies
         render json: @currencies
       end
 
