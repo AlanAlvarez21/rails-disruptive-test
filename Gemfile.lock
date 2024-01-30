@@ -75,6 +75,8 @@ GEM
     debug (1.9.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    dockerfile-rails (1.6.4)
+      rails (>= 3.0.0)
     erubi (1.12.0)
     faker (3.2.3)
       i18n (>= 1.8.11, < 2)
@@ -109,7 +111,11 @@ GEM
     net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
+    nokogiri (1.16.0-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.16.0-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
     pg (1.5.4)
     psych (5.1.2)
@@ -167,11 +173,14 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
+  aarch64-linux
   arm64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
   debug
+  dockerfile-rails (>= 1.6)
   faker
   pg (~> 1.1)
   puma (~> 5.0)
