@@ -11,9 +11,12 @@ import {
     Avatar,
     Input
   } from "@material-tailwind/react";
-  import PropTypes from 'prop-types';
-  import { ada, btc, eth }  from '../assets';
-  import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types';
+import { ada, btc, eth }  from '../assets';
+import { useEffect, useState } from 'react'
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
+import Papa from 'papaparse';
 
   const Table = ({ coins }) => {
     const [investments, setInvestments] = useState([]);
@@ -60,9 +63,26 @@ import {
     };
 
     const downloadData = async () => {
-      console.log('hola')
-    }
-  
+      try {
+        const csvData = generateCSV();
+        const jsonData = JSON.stringify(investments);
+        
+        const zip = new JSZip();
+        zip.file('data.csv', csvData);
+        zip.file('data.json', jsonData);
+        
+        const zipBlob = await zip.generateAsync({ type: 'blob' });
+        saveAs(zipBlob, 'investment_data.zip');
+      } catch (error) {
+        console.error('Error:', error);
+        setError('Failed to download data');
+      }
+    };
+    
+    const generateCSV = () => {
+      const csv = Papa.unparse(investments);
+      return csv;
+    };
   const calculateInvestments = async () => {
     try {
       const response = await fetch('http://localhost:3000/calculate_investment', {
