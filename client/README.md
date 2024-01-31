@@ -1,8 +1,38 @@
-# React + Vite
+# Rails - React Technical Assestment 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Crypto Application to get ROI in crypto investment 
 
-Currently, two official plugins are available:
+App currently deployed here: 
+   https://rails-disruptive-test.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Getting Started
+
+### Prerequisites
+
+Software Requirements
+- Ruby on Rails
+- Vite
+- Ruby
+
+
+To run the server-side
+    
+    npm install
+
+    bundle install
+    
+    rake db:create
+
+    rake db:migrate
+
+    bin/rails s 
+
+To run the client-side
+    
+    cd client 
+
+    npm install
+    
+    npm run dev
+
