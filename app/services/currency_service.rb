@@ -1,4 +1,5 @@
-# services/currency_service.rb
+require 'uri'
+require 'net/http'
 class CurrencyService
     include ApiConstants
   
