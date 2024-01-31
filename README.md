@@ -1,24 +1,38 @@
-# README
+# Rails - React Technical Assestment 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Crypto Application to get ROI in crypto investment 
 
-Things you may want to cover:
+App currently deployed here: 
+   https://rails-disruptive-test.vercel.app/
 
-* Ruby version
 
-* System dependencies
+## Getting Started
 
-* Configuration
+### Prerequisites
 
-* Database creation
+Software Requirements
+- Ruby on Rails
+- Vite
+- Ruby
 
-* Database initialization
 
-* How to run the test suite
+To run the server-side
+    
+    npm install
 
-* Services (job queues, cache servers, search engines, etc.)
+    bundle install
+    
+    rake db:create
 
-* Deployment instructions
+    rake db:migrate
 
-* ...
+    bin/rails s 
+
+To run the client-side
+    
+    cd client 
+
+    npm install
+    
+    npm run dev
+
