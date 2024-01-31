@@ -13,6 +13,6 @@ class Investment
     yearly_interest = (1 + @monthly_interest) ** 12 - 1
     final_balance = @initial_balance * (1 + yearly_interest)
     profit = final_balance - @initial_balance
-    { currency: @currency, final_balance: final_balance, profit: profit }
+    { currency: @currency, final_balance: final_balance, profit: profit, initial_balance: @initial_balance }
   end
 end

@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   end
 
   post '/calculate_investment', to: 'investments#calculate'
-
+  post '/recaulculate_roi', to: 'investments#recaulculate_roi'
 end
