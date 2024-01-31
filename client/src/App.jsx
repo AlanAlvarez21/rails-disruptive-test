@@ -1,13 +1,15 @@
 import './App.css'
-import CurrencyList from './components/CurrencyList'
+import { BrowserRouter as Router } from 'react-router-dom';
+import { NavBar, AppRoutes } from './components'
 
 function App() {
   return (
-    <>
-      <div>
-        <CurrencyList />
+    <Router>
+      <div className='app'>
+        <NavBar />
+        <AppRoutes />
       </div>
-    </>
+    </Router>
   )
 }
 
