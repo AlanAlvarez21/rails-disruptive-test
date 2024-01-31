@@ -1,5 +1,6 @@
 import {
     ArrowDownTrayIcon,
+    CalculatorIcon,
   } from "@heroicons/react/24/outline";
   import {
     Card,
@@ -64,7 +65,7 @@ import {
                   icon={<MagnifyingGlassIcon className="h-5 w-5" />}
                 />
               </div> */}
-              <Button className="flex items-center gap-3" size="sm">
+              <Button color="green" className="flex items-center gap-3" size="sm">
                 <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Descargar .cvs & JSON
               </Button>
             </div>
@@ -163,7 +164,7 @@ import {
             </tbody>
           </table>
             <Button color="blue" className="flex mt-5  ml-8 gap-3" size="sm" onClick={calculateInvestments}>
-                    <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Calcular ROI
+                    <CalculatorIcon strokeWidth={2} className="h-4 w-4" /> Calcular ROI
             </Button>
             {error && <div className="text-red-500 mt-4">{error}</div>}
             <DataTable1 investments={investments} />
