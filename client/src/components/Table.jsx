@@ -17,6 +17,8 @@ import { useEffect, useState } from 'react'
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import Papa from 'papaparse';
+import { API_URL } from '../constants'
+
 
   const Table = ({ coins }) => {
     const [investments, setInvestments] = useState([]);
@@ -43,7 +45,8 @@ import Papa from 'papaparse';
 
     const handleSubmit = async () => {
       try {
-        const response = await fetch('https://railsdisruptivestudiotest.fly.dev/recaulculate_roi', {
+        
+        const response = await fetch(`${API_URL}/recaulculate_roi`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -86,7 +89,7 @@ import Papa from 'papaparse';
 
   const calculateInvestments = async () => {
     try {
-      const response = await fetch('https://railsdisruptivestudiotest.fly.dev/calculate_investment', {
+      const response = await fetch(`${API_URL}/calculate_investment`, {
         method: 'POST',
       });
       if (!response.ok) {
