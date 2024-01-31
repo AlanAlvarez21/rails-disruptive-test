@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
-import CryptoCard from './CryptoCard';
+import Table from './Table';
 // import { API_URL } from '../constants'
 
 function CurrencyList() {
-  const [currencies, setCurrency] = useState([]);
   const [, setLoading] = useState(true);
   const [, setError] = useState(null);
+  const [coins, setCoins] = useState([]);
+
 
   useEffect(() => {
     async function loadCurrencies() {
@@ -73,12 +74,13 @@ function CurrencyList() {
           }
       ]
 
-      setCurrency(response)
+      // setCurrency(response)
+      setCoins(response)
 
-        // if (response.ok) {
-        //   const json = await response.json();
-        //   setCurrency(json)
-        // }
+      // if (response.ok) {
+      //   const json = await response.json();
+      //   setCurrency(json)
+      // }
       } catch (error) {
         setError('An error ocurred fetching the coinapi data')
         console.error(error)
@@ -89,13 +91,12 @@ function CurrencyList() {
     loadCurrencies()
   }, [])
 
+
   return (
-    <div className='flex mt-4'>
-      <h1 className="text-2xl font-semibold mb-4">Información de Criptomonedas</h1>
-      {currencies.map((currency, index) => (
-        <CryptoCard key={index} data={currency} />
-      ))}
+    <div>
+        <Table coins={coins} />
     </div>
+
   );
   
 }
