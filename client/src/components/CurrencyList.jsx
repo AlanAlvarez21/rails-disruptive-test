@@ -11,8 +11,7 @@ function CurrencyList() {
   useEffect(() => {
     async function loadCurrencies() {
       try {
-        // const response = await fetch('https://railsdisruptivestudiotest.fly.dev/api/v1/currencies')
-      const response = await fetch('http://localhost:3000/api/v1/currencies')
+        const response = await fetch('https://railsdisruptivestudiotest.fly.dev/api/v1/currencies')
       if (response.ok) {
         const json = await response.json();
         setCoins(json)

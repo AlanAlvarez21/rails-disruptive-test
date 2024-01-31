@@ -43,7 +43,7 @@ import Papa from 'papaparse';
 
     const handleSubmit = async () => {
       try {
-        const response = await fetch('http://localhost:3000/recaulculate_roi', {
+        const response = await fetch('https://railsdisruptivestudiotest.fly.dev/recaulculate_roi', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -62,30 +62,31 @@ import Papa from 'papaparse';
       }
     };
 
-    const downloadData = async () => {
-      try {
-        const csvData = generateCSV();
-        const jsonData = JSON.stringify(investments);
-        
-        const zip = new JSZip();
-        zip.file('data.csv', csvData);
-        zip.file('data.json', jsonData);
-        
-        const zipBlob = await zip.generateAsync({ type: 'blob' });
-        saveAs(zipBlob, 'investment_data.zip');
-      } catch (error) {
-        console.error('Error:', error);
-        setError('Failed to download data');
-      }
-    };
+  const downloadData = async () => {
+    try {
+      const csvData = generateCSV();
+      const jsonData = JSON.stringify(investments);
+      
+      const zip = new JSZip();
+      zip.file('data.csv', csvData);
+      zip.file('data.json', jsonData);
+      
+      const zipBlob = await zip.generateAsync({ type: 'blob' });
+      saveAs(zipBlob, 'investment_data.zip');
+    } catch (error) {
+      console.error('Error:', error);
+      setError('Failed to download data');
+    }
+  };
     
-    const generateCSV = () => {
-      const csv = Papa.unparse(investments);
-      return csv;
-    };
+  const generateCSV = () => {
+    const csv = Papa.unparse(investments);
+    return csv;
+  };
+
   const calculateInvestments = async () => {
     try {
-      const response = await fetch('http://localhost:3000/calculate_investment', {
+      const response = await fetch('https://railsdisruptivestudiotest.fly.dev/calculate_investment', {
         method: 'POST',
       });
       if (!response.ok) {
