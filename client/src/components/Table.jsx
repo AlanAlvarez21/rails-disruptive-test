@@ -195,7 +195,7 @@ import Papa from 'papaparse';
                     color="blue-gray"
                     className="font-normal leading-none opacity-70"
                   >
-                    Inversion Inicial:
+                    Inversion Inicial $USD
                   </Typography>
                 </th>
                 <th
@@ -206,7 +206,7 @@ import Papa from 'papaparse';
                     color="blue-gray"
                     className="font-normal leading-none opacity-70"
                   >
-                    Monto Total Final:
+                    Monto Total Final $USD
                   </Typography>
                 </th>
                 <th
