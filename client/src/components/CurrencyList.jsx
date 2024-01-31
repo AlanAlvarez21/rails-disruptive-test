@@ -73,8 +73,6 @@ function CurrencyList() {
               "data_end": "2024-01-30"
           }
       ]
-
-      // setCurrency(response)
       setCoins(response)
 
       // if (response.ok) {
