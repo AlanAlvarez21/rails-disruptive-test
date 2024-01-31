@@ -6,4 +6,7 @@ Rails.application.routes.draw do
       resources :currencies
     end
   end
+
+  post '/calculate_investment', to: 'investments#calculate'
+
 end
