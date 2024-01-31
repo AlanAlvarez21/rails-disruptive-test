@@ -1,0 +1,6 @@
+{
+  "moduleNameMapper": {
+    "^react$": "<ruta-alternativa>/react.js"
+  }
+}
+
