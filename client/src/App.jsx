@@ -5,10 +5,8 @@ import { NavBar, AppRoutes } from './components'
 function App() {
   return (
     <Router>
-      <div className='app'>
         <NavBar />
         <AppRoutes />
-      </div>
     </Router>
   )
 }
