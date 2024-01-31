@@ -9,7 +9,8 @@ import {
   Button,
   CardBody,
   Avatar,
-  Input
+  Input,
+  Alert
 } from "@material-tailwind/react";
 import PropTypes from 'prop-types';
 import { ada, btc, eth }  from '../assets';
@@ -23,7 +24,9 @@ const Table = ({ coins, fetchInvestments }) => {
   const [investments, setInvestments] = useState([]);
   const [error, setError] = useState(null);
   const [inputValues, setInputValues] = useState({});
-  const [hasFetchedData, setHasFetchedData] = useState(false); // Nuevo estado
+  const [hasFetchedData, setHasFetchedData] = useState(false);
+  const [open, setOpen] = useState(true);
+
 
   const handleInputChange = (event, name) => {
     const { value } = event.target;
@@ -105,6 +108,8 @@ const calculateInvestments = async () => {
   }
 };
 
+
+
 useEffect(() => {
   // Verifica si ya se ha realizado la solicitud antes de hacerla nuevamente
   if (!hasFetchedData) {
@@ -139,12 +144,17 @@ useEffect(() => {
 
   return (
     <Card className="w-full h-full">
+         <Typography variant="h5" className="mb-2" color="blue-gray">
+              Tabla de Criptomonedas Disponibles
+            </Typography>
+          
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <div className="flex flex-col justify-between gap-8 mb-4 md:flex-row md:items-center">
           <div>
-            <Typography variant="h5" color="blue-gray">
-              Tabla de Criptomonedas Disponibles
-            </Typography>
+         
+      <Alert color="yellow"  open={open} onClose={() => setOpen(false)}>
+        Montos de Inversion seteados de ejemplo desde origen.cvs BTC:500 ETH:250 ADA:120
+      </Alert>
           </div>
           <div className="flex w-full gap-2 shrink-0 md:w-max">
             <Button color="blue" className="flex items-center gap-3" size="sm" onClick={handleSubmit}>
