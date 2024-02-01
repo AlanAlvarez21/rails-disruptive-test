@@ -30,10 +30,13 @@ const Table = ({ coins, fetchInvestments }) => {
 
   const handleInputChange = (event, name) => {
     const { value } = event.target;
-    setInputValues(prevState => ({
-      ...prevState,
-      [name]: value,
-    }));
+    if (!isNaN(value) && parseFloat(value) >= 0) {
+      setInputValues(prevState => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
+  
   };
 
   const getImage = (asset_id) => {
@@ -144,6 +147,8 @@ useEffect(() => {
     return coin;
   }
 });
+
+
 
   return (
     <Card className="w-full h-full">
@@ -305,16 +310,16 @@ useEffect(() => {
                 </td>
                 <td className="p-4 border-b border-blue-gray-50">
                   <div className="w-full md:w-72">
-                  <div className="w-72">
-                            <Input
-                            type="number"
-                            placeholder={initial_balance}
-                            value={inputValues[name] || ''}
-                            onChange={(event) => handleInputChange(event, name)}
-                            className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
-                            labelProps={{ className: "hidden" }}
-                            containerProps={{ className: "min-w-[100px]" }}
-                          />
+                    <div className="w-72">
+                      <Input
+                        type="number"
+                        placeholder={initial_balance}
+                        value={inputValues[name] || ''}
+                        onChange={(event) => handleInputChange(event, name)}
+                        className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
+                        labelProps={{ className: "hidden" }}
+                        containerProps={{ className: "min-w-[100px]" }}
+                      />
                     </div>
                   </div>
                 </td>
