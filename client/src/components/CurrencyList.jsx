@@ -1,40 +1,33 @@
-import { useState, useEffect } from 'react'
-import Table from './Table';
-import { API_URL } from '../constants'
+import { useState, useEffect } from "react";
+import Table from "./Table";
+import { API_URL } from "../constants";
 
 function CurrencyList() {
   const [, setLoading] = useState(true);
   const [, setError] = useState(null);
   const [coins, setCoins] = useState([]);
 
-
   useEffect(() => {
     async function loadCurrencies() {
       try {
-        const response = await fetch(`${API_URL}/api/v1/currencies`)
-      if (response.ok) {
+        const response = await fetch(`${API_URL}/api/v1/currencies`);
         const json = await response.json();
-        setCoins(json)
-      }
+        setCoins(json);
       } catch (error) {
-        setError('An error ocurred fetching the coinapi data')
-        console.error(error)
+        setError("An error ocurred fetching the coinapi data");
+        console.error(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
-    loadCurrencies()
-  }, [])
-
+    loadCurrencies();
+  }, []);
 
   return (
     <div>
-        <Table coins={coins} />
+      <Table coins={coins} />
     </div>
-
   );
-  
 }
 
-
-export default CurrencyList
+export default CurrencyList;

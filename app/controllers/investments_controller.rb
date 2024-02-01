@@ -1,14 +1,16 @@
 # frozen_string_literal: true
+
 require 'csv'
 require 'httparty'
 
 class InvestmentsController < ApplicationController
-  before_action :fetch_currencies_data, only: [:calculate, :recaulculate_roi]
+  before_action :fetch_currencies_data, only: %i[calculate recaulculate_roi]
 
   def calculate
     investments = []
 
     if File.exist?('origen.csv')
+      fetch_currencies_data
       CSV.foreach('origen.csv', headers: true) do |row|
         asset_id = row['Moneda']
         initial_balance = row['balance_ini'].to_f

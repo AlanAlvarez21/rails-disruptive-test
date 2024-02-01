@@ -1,13 +1,12 @@
-import { Route, Routes } from "react-router-dom"
-import { CurrencyList } from './';
+import { Route, Routes } from "react-router-dom";
+import { CurrencyList } from "./";
 
 function AppRoutes() {
-  return(
+  return (
     <Routes>
-        <Route path="/" element={<CurrencyList/>}></Route>
-        <Route path="/new" element={<h1>Nueva moneda!</h1>}></Route>
+      <Route path="/" element={<CurrencyList />}></Route>
     </Routes>
   );
 }
 
-export default AppRoutes
+export default AppRoutes;

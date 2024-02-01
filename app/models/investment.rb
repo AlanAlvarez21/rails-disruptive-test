@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 require 'csv'
@@ -16,8 +15,9 @@ class Investment
   def calculate_profit
     yearly_interest = (1 + @monthly_interest)**12 - 1
     final_balance = @initial_balance * (1 + yearly_interest)
-    crypto_total =  final_balance / @price_usd  
+    crypto_total =  final_balance / @price_usd
     profit = final_balance - @initial_balance
-    { currency: @currency, final_balance: final_balance, profit: profit, initial_balance: @initial_balance, crypto_total: crypto_total }
+    { currency: @currency, final_balance: final_balance, profit: profit, initial_balance: @initial_balance,
+      crypto_total: crypto_total }
   end
 end
