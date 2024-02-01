@@ -101,9 +101,11 @@ const Table = ({ coins, fetchInvestments }) => {
       const fetchData = async () => {
         try {
           const response = await calculateInvestments();
-          const data = await response.json();
-          setInvestments(data);
-          setHasFetchedData(true);
+          if (response) {
+            const data = await response.json();
+            setInvestments(data);
+            setHasFetchedData(true);
+          }
         } catch (error) {
           console.error("Error fetching data:", error);
         }
