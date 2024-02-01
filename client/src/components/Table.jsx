@@ -116,9 +116,11 @@ useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await calculateInvestments();
-        const data = await response.json();
-        setInvestments(data);
-        setHasFetchedData(true);
+        if (response) {
+          const data = await response.json();
+          setInvestments(data);
+          setHasFetchedData(true);
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -136,7 +138,7 @@ useEffect(() => {
       final_balance: investment.final_balance?.toFixed(2),
       profit: investment.profit?.toFixed(2),
       initial_balance: investment.initial_balance, 
-      crypto_total: investment.crypto_total.toFixed(4),
+      crypto_total: investment.crypto_total?.toFixed(4),
     };
   } else {
     return coin;
@@ -154,7 +156,7 @@ useEffect(() => {
           <div>
          
       <Alert color="yellow"  open={open} onClose={() => setOpen(false)}>
-        Montos de Inversion seteados de ejemplo desde origen.cvs BTC:500 ETH:250 ADA:120
+        Montos de inverción iniciales vienen de ORIGEN.CVS (BTC: 5%) (ETH: 4.2%) (ADA: 1%) % = ROI ANUAL
       </Alert>
           </div>
           <div className="flex w-full gap-2 shrink-0 md:w-max">
@@ -236,7 +238,7 @@ useEffect(() => {
                   color="blue-gray"
                   className="font-normal leading-none opacity-70"
                 >
-                  Acumulado Final $USD
+                  Acumulado Anual $USD
                 </Typography>
               </th>
               <th
@@ -258,7 +260,7 @@ useEffect(() => {
                   color="blue-gray"
                   className="font-normal leading-none opacity-70"
                 >
-                  Acumulado Final Crypto
+                  Acumulado Anual Crypto
                 </Typography>
               </th>
             </tr>
