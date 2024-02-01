@@ -133,9 +133,10 @@ useEffect(() => {
   if (investment) {
     return {
       ...coin,
-      final_balance: investment.final_balance.toFixed(2),
-      profit: investment.profit.toFixed(2),
+      final_balance: investment.final_balance?.toFixed(2),
+      profit: investment.profit?.toFixed(2),
       initial_balance: investment.initial_balance, 
+      crypto_total: investment.crypto_total.toFixed(4),
     };
   } else {
     return coin;
@@ -235,7 +236,7 @@ useEffect(() => {
                   color="blue-gray"
                   className="font-normal leading-none opacity-70"
                 >
-                  Monto Total Final $USD
+                  Acumulado Final $USD
                 </Typography>
               </th>
               <th
@@ -249,10 +250,21 @@ useEffect(() => {
                   Ganancia $USD
                 </Typography>
               </th>
+              <th
+                className="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50"
+              >
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal leading-none opacity-70"
+                >
+                  Acumulado Final Crypto
+                </Typography>
+              </th>
             </tr>
           </thead>
           <tbody>
-            {mergedCoins.map(({ asset_id, name, price_usd, final_balance, profit, initial_balance }) => (
+            {mergedCoins.map(({ asset_id, name, price_usd, final_balance, profit, initial_balance, crypto_total }) => (
               <tr key={asset_id} className="hover:bg-blue-200">
                 <td className="p-4 border-b border-blue-gray-50">
                   <Avatar
@@ -320,6 +332,15 @@ useEffect(() => {
                     className="font-normal"
                   >
                     {profit ? profit : '-'}
+                  </Typography>
+                </td>
+                <td className="p-4 border-b border-blue-gray-50">
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal"
+                  >
+                    {crypto_total + ' ' + asset_id}
                   </Typography>
                 </td>
               </tr>
