@@ -50,7 +50,7 @@ function NavBar() {
           variant="h6"
           className="mr-4 cursor-pointer py-1.5"
         >
-          Calculadora de Retorno de la Inversión
+          Calculadora de Retorno de Crypto Inversión
         </Typography>
         <div className="hidden lg:block">
           <NavList />
