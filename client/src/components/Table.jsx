@@ -8,6 +8,7 @@ import {
   Avatar,
   Input,
   Alert,
+  Spinner
 } from "@material-tailwind/react";
 import PropTypes from "prop-types";
 import { ada, btc, eth } from "../assets";
@@ -246,6 +247,11 @@ const Table = ({ coins, fetchInvestments }) => {
             </tr>
           </thead>
           <tbody>
+          {
+             mergedCoins > 0 && (
+              <Spinner className="w-12 h-12 mt-6 ml-auto" />
+            )
+          } 
             {mergedCoins.map(
               ({
                 asset_id,
